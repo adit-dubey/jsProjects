@@ -1,0 +1,64 @@
+<!DOCTYPE html> 
+<!-- DOM combines JavaScript and HTML & gives full control of the webpage -->
+<html>
+  <head>
+    <title>DOM Projects</title>
+  </head>
+  <body>
+    <p>Please Follw Me </p>
+    <button onclick=" follow();   
+    " class="js-follow-button"> Follow </button>
+
+    <p>Flipkart Shipping Calculator</p>
+    <~input placeholder="Cost of Order" class="js-cost-input" onkeydown="
+      handleCostKeyDown(event);
+    ">
+    <button onclick="
+      calculateTotal();
+    ">Calculate</button>
+    <p class="js-total-cost"></p>
+
+
+    <script>
+      function handleCostKeyDown(event){
+          if(event.key === 'Enter'){
+            calculateTotal();
+          }
+
+      }
+
+
+
+      function calculateTotal(){
+        const inputElement = document.querySelector('.js-cost-input');
+        let cost = Number(inputElement.value);
+
+
+        if(cost<=40){
+          cost +=10;
+        }
+
+        document.querySelector('.js-total-cost')
+          .innerHTML = `$${cost}`;
+
+      }
+
+
+
+      function follow(){
+          const buttonElement = document.querySelector('.js-follow-button');
+          
+          if(buttonElement.innerText === 'Follow'){
+          buttonElement.innerHTML = 'Followed';
+
+          alert('Thank you for Following me!!');
+          } else {
+          buttonElement.innerHTML = 'Follow';
+          }
+      }
+
+
+     
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+<!-- DOM combines JavaScript and HTML & gives full control of the webpage -->
+<html>
+  <head>
+    <title>DOM</title>
+  </head>
+  <body>
+    <button>hello</button>
+    <button class="js-button"> Second Button</button>
+    <script>
+      // Put any element in the JavaScript
+      console.log(document.querySelector('button').innerHTML);
+      document.querySelector('button')
+        .innerHTML = 'Changed';
+
+      const buttonElement = document.querySelector('.js-button');
+
+      console.log(buttonElement);
+
+
+
+      /*
+      console.log(document.title); 
+      document.title = "Changed";
+
+
+      console.log(document.body);
+      console.log(typeof document.body);
+
+      console.log(document.body.innerHTML);
+      document.body.innerHTML = '<button> Good Job! </button>';
+      */
+
+
+
+
+
+
+      /*
+      document.body.innerHTML = 'hello';
+      document.title = 'Good Job!'
+      */
+      
+    </script>
+  </body>
+</html>
