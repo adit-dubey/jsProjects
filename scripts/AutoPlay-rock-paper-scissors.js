@@ -8,22 +8,65 @@ updateScoreElement();
 
 let isAutoPlaying = false;
 let intervalId;
+
+
 function autoPlay(){
-    if (!isAutoPlaying){
-        intervalId = setInterval(function(){
-            const playerMove = pickComputerMove();
-            playGame(playerMove);
-        },1500);
-        isAutoPlaying = true;
+  if (!isAutoPlaying){
+    intervalId = setInterval(() => {
+        const playerMove = pickComputerMove();
+        playGame(playerMove);
+    },1500);
+    isAutoPlaying = true;
+    document.querySelector('.js-auto-play-button')
+      .innerHTML = 'Stop Playing';
 
-    } else {
-        clearInterval(intervalId);
-        isAutoPlaying = false;
-    }
-
-
-
+  } else {
+    clearInterval(intervalId);
+    isAutoPlaying = false;
+    document.querySelector('.js-auto-play-button')
+      .innerHTML = 'Auto Play';
+  }
 }
+
+document.querySelector('.js-auto-play-button')
+  .addEventListener('click', () => {
+    autoPlay();
+  });
+  
+
+document.addEventListener('keydown', (event) => {
+  if(event.key === 'a'){
+    autoPlay();
+  }
+});
+
+document.querySelector('.js-rock-button')
+  .addEventListener('click', () => {
+    playGame('rock');
+  });
+
+document.querySelector('.js-paper-button')
+  .addEventListener('click', () => {
+    playGame('paper');
+  });
+
+document.querySelector('.js-scissor-button')
+  .addEventListener('click', () => {
+    playGame('scissors');
+});
+
+document.body.addEventListener('keydown', (event) => {
+  if (event.key === 'r'){
+    playGame('rock');
+  } else if (event.key === 'p'){
+    playGame('paper');
+  } else if (event.key === 's'){
+    playGame('scissors');
+  }
+
+});
+
+
 
 function playGame(playerMove) {
   const computerMove = pickComputerMove();
@@ -78,22 +121,22 @@ function playGame(playerMove) {
 
 function updateScoreElement(){
 document.querySelector('.js-score')
-    .innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+  .innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
 
 }
 
 function pickComputerMove() {
-    const randomNumber = Math.random();
+  const randomNumber = Math.random();
 
-    let computerMove = '';
+  let computerMove = '';
 
-    if (randomNumber >= 0 && randomNumber < 1 / 3) {
+  if (randomNumber >= 0 && randomNumber < 1 / 3) {
     computerMove = 'rock';
-    } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
+  } else if (randomNumber >= 1 / 3 && randomNumber  < 2 / 3) {
     computerMove = 'paper';
-    } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
-    computerMove = 'scissors';
-    }
+  } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
+     computerMove = 'scissors';
+  }
 
-    return computerMove;
+  return computerMove;
 }
